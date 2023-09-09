@@ -1,13 +1,13 @@
 -first install nodejs >= 16
 
 
-###to run development
+#to run development
 ```
 npm install
 npm run start
 ```
 
-###to build app
+#to build app
 ```
 npm run make
 ```
