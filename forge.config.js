@@ -1,3 +1,5 @@
+// build configuration file
+
 module.exports = {
   packagerConfig: {
     asar: true,

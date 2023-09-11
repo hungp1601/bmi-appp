@@ -7,9 +7,18 @@ const condition = document.querySelector('#condition')
 
 btn.addEventListener('click', () => {
   const [w, h] = [weight.value, height.value]
+
+  // validate height and weight
+  if (w === "" || h === "" || w <= 0 || h <= 0) {
+    alert('Please input valid height and weight');
+    return
+  }
+
+  //bmi formula
   const bmi_value = w / (h * h / 10000)
   bmi.innerHTML = bmi_value
 
+  // find condition index by bmi value
   const index = lower(BMIs, bmi_value);
   condition.innerHTML = `u're ${conditions[index]}`
 })
@@ -27,6 +36,8 @@ function lower(arr, target) {
 }
 
 
+
+//bmi value for a condition
 const BMIs = [16, 17, 18.5, 25, 30, 35, 40]
 const conditions = [
   "Severe Thinness",
