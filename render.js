@@ -19,26 +19,18 @@ btn.addEventListener('click', () => {
   bmi.innerHTML = bmi_value
 
   // find condition index by bmi value
-  const index = lower(BMIs, bmi_value);
+  const index = lower(bmi_value);
   condition.innerHTML = `u're ${conditions[index]}`
 })
 
-function lower(arr, target) {
-  let low = 0, high = arr.length;
-
-  while (low < high) {
-    const mid = Math.floor((low + high) / 2);
-    if (arr[mid] < target) low = mid + 1;
-    else high = mid;
-  }
-
-  return low;
+function lower (bmi) {
+  return BMIs.findIndex((value) => bmi < value);
 }
 
 
 
 //bmi value for a condition
-const BMIs = [16, 17, 18.5, 25, 30, 35, 40]
+const BMIs = [0, 16, 17, 18.5, 25, 30, 35, 40]
 const conditions = [
   "Severe Thinness",
   "Moderate Thinness",
