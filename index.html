@@ -1,36 +1,57 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hello from Electron renderer!</title>
+  <link
+    href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700|Roboto:400,300,700,500,200,800,600,900,100'
+    rel='stylesheet' type='text/css'>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script nonce="undefined" src="//www.zingchart.com/scripts/zcDocs.js"></script>
+  <link href='//www.zingchart.com/css/zcDocs.css' rel='stylesheet' type='text/css'>
+  <script nonce="undefined" src='//code.jquery.com/jquery-2.1.4.min.js'></script>
+
+  <script nonce="undefined" src="https://cdn.zingchart.com/zingchart.min.js"></script>
+  <!-- use the font -->
+
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <div>
-    height(cm)
-    <input type="number" name="" id="height">
-  </div>
+  <div class="flex flex-row h-screen w-screen items-center gap-20 justify-center">
+    <div class="form flex flex-col items-center">
+      <h2 class="mb-9 h2">BMI Calculator</h2>
 
-  <div>
-    weight(kg)
-    <input type="number" name="" id="weight">
-  </div>
+      <div class="w-full flex flex-col gap-6 form form-wrapper">
 
-  <button type="button" id="btn">calculate BMI</button>
+        <div class="relative">
+          <div class="medium-body">Your Height</div>
+          <input name="" id="height" class="input " />
+          <div class="height"></div>
+        </div>
 
-<br>
-  <div>
-    BMI:
-    <span id="bmi"></span>
-  </div>
+        <div class="relative">
+          <div class="medium-body">Your Weight</div>
+          <input id="weight" class="input " />
+          <div class="weight"></div>
+        </div>
 
-  <div>
-    <span id="condition"></span>
+        <div class="w-full flex flex-row gap-4 justify-center">
+          <button id="btn"> <img src="Frame 60.png" alt=""> calculate BMI</button>
+        </div>
+
+        <div>
+          <span id="condition"></span>
+        </div>
+      </div>
+    </div>
+
+    <div id='myChart'></div>
   </div>
+  <script src="./render.js"></script>
 </body>
 
-
-<script src="./render.js"></script>
 
 </html>
