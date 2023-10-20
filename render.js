@@ -57,7 +57,7 @@ var myConfig = {
     aperture: 180,
     minValue: 15,
     maxValue: 40,
-    step: 1,
+    step: 0.5,
     center: {
       visible: false
     },
@@ -66,16 +66,16 @@ var myConfig = {
     },
 
     item: {
-      offsetR: -10,
+      offsetR: -5,
       // rules: [{
       //   rule: '%i == 1',
       //   offsetX: 15
       // }]
     },
     // labels: ['15', '18.5', '25', '30', '35', '40'],
-    // labels: ['15', '', '18', '', '', '', '25', '', '', '30', '', '', '35', '', '', '40'],
+    labels: ['15', '', '', '', '', '', '18.5', '', '', '', '', '', '', '', '', '', '', '', '25', '', '', '', '', '', '', '', '', '', '', '', '30', '', '', '', '', '', '', '', '', '', '', '', '35', '', '', '', '', '', '', '', '40'],
     ring: {
-      size: 50,
+      size: 70,
       rules: [
         {
           rule: '%v >= 35',
@@ -104,7 +104,12 @@ var myConfig = {
     values: [15], // starting value
     backgroundColor: 'black',
     indicator: [4, 4, 4, 4, 0.6],
-
+    animation: {
+      effect: 2,
+      method: 1,
+      sequence: 4,
+      speed: 900
+    },
   }]
 };
 
@@ -130,25 +135,16 @@ btn.addEventListener('click', function () {
   }
 
   h /= 100;
-  h *= h; 
 
   //bmi formula
-  const bmi_values = -(-(w / h).toFixed(1));
+  const bmi_values = -(-(w / (h * h)).toFixed(1));
 
 
-  // zingchart.exec('myChart', 'setseriesvalues', {
-  //   'plotindex': 0,
-  //   'values': [bmi_values], // starting value
-  // });
-
-  zingchart.exec('myChart', 'setseriesdata', {
+  zingchart.exec('myChart', 'setseriesvalues', {
     'plotindex': 0,
-    'data': {
-      'values': [bmi_values],
-      backgroundColor: 'black',
-      indicator: [4, 4, 4, 4, 0.6],
-    }
+    'values': [bmi_values], // starting value
   });
+
 
 })
 
