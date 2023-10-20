@@ -121,7 +121,7 @@ zingchart.render({
 
 
 btn.addEventListener('click', function () {
-  const [w, h] = [weight.value, height.value]
+  let [w, h] = [weight.value, height.value]
 
   // validate height and weight
   if (w === "" || h === "" || w <= 0 || h <= 0) {
@@ -129,8 +129,11 @@ btn.addEventListener('click', function () {
     return
   }
 
+  h /= 100;
+  h *= h; 
+
   //bmi formula
-  const bmi_values = (w / (h * h / 10000)).toFixed(1);
+  const bmi_values = -(-(w / h).toFixed(1));
 
 
   // zingchart.exec('myChart', 'setseriesvalues', {
