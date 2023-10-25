@@ -13,7 +13,9 @@ const createWindow = () => {
 app.whenReady().then(() => {
   createWindow()
 
-  // recheck window when active but have no window 
+  // Because windows cannot be created before the ready event,
+  //you should only listen for activate events after your app is initialized.
+  // Do this by only listening for activate events inside your existing whenReady() callback.
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
       createWindow()
@@ -21,6 +23,7 @@ app.whenReady().then(() => {
   })
 })
 
+//Quit the app when all windows are closed (Windows & Linux)
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit()
