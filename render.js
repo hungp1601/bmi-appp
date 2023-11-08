@@ -130,16 +130,18 @@ btn.addEventListener('click', function () {
 
   // validate height and weight
   if (w === "" || h === "" || w <= 0 || h <= 0) {
-    alert('Please input valid height and weight');
+    // alert('Please input valid height and weight');
     return
   }
 
-  h /= 100;
+  h /= 100; // convert cm -> meter
 
   //bmi formula
-  const bmi_values = -(-(w / (h * h)).toFixed(1));
+  const bmi_values = parseFloat((w / (h * h)).toFixed(1));
 
+  
 
+  // re-render chart
   zingchart.exec('myChart', 'setseriesvalues', {
     'plotindex': 0,
     'values': [bmi_values], // starting value
